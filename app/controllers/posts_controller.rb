@@ -14,9 +14,11 @@ class PostsController < ApplicationController
   def create
     @post = Post.new
     @post.attributes = params.require(:post).permit(:title, :body)
-    @post.save
+    @post.save!
 
     redirect_to post_path(@post)
+  rescue ActiveRecord::RecordInvalid
+    render action: :new, status: :unprocessable_entity
   end
 
   # GET /posts/:id
@@ -33,9 +35,11 @@ class PostsController < ApplicationController
   def update
     @post = Post.find params[:id]
     @post.attributes = params.require(:post).permit(:title, :body)
-    @post.save
+    @post.save!
 
     redirect_to post_path(@post)
+  rescue ActiveRecord::RecordInvalid
+    render action: :edit, status: :unprocessable_entity
   end
 
   # DELETE /posts/:id

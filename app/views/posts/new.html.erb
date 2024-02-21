@@ -1,5 +1,8 @@
 <%= form_with model: @post, local: true do |f| %>
   <%= f.text_field :title %>
+  <%= render_errors f.object, :title %>
   <%= f.text_area :body %>
+  <%= render_errors f.object, :body %>
   <%= f.submit %>
 <% end %>
+
