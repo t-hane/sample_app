@@ -1,0 +1,12 @@
+<%= link_to 'Posts', posts_path %>
+<%= link_to 'Edit', edit_post_path(@post) %>
+
+<dl>
+  <dt>Title</dt>
+  <dd><%= @post.title %></dd>
+</dl>
+<dl>
+  <dt>Body</dt>
+  <dd><%= @post.body %></dd>
+</dl>
+
