@@ -15,6 +15,8 @@ class PostsController < ApplicationController
     @post = Post.new
     @post.attributes = params.require(:post).permit(:title, :body)
     @post.save
+
+    redirect_to post_path(@post)
   end
 
   # GET /posts/:id
@@ -32,6 +34,8 @@ class PostsController < ApplicationController
     @post = Post.find params[:id]
     @post.attributes = params.require(:post).permit(:title, :body)
     @post.save
+
+    redirect_to post_path(@post)
   end
 
   # DELETE /posts/:id
