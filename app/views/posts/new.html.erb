@@ -8,6 +8,7 @@
     <%= f.label :status, name, value: name %>
   <% end %>
   <%= f.collection_select :user_id, User.all, :id, :name %>
+  <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name %>
   <%= f.submit %>
 <% end %>
 

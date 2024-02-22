@@ -17,3 +17,7 @@
   <dt>User</dt>
   <dd><%= @post.user&.name %></dd>
 </dl>
+<dl>
+  <dt>Tags</dt>
+  <dd><%= @post.tags.map(&:name).join(' ') %></dd>
+</dl>

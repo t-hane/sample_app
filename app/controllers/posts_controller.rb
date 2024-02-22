@@ -13,7 +13,7 @@ class PostsController < ApplicationController
   # POST /posts
   def create
     @post = Post.new
-    @post.attributes = params.require(:post).permit(:title, :body, :status, :user_id)
+    @post.attributes = params.require(:post).permit(:title, :body, :status, :user_id, tag_ids: [])
     @post.save!
 
     redirect_to post_path(@post)
@@ -34,7 +34,7 @@ class PostsController < ApplicationController
   # PATCH /posts/:id
   def update
     @post = Post.find params[:id]
-    @post.attributes = params.require(:post).permit(:title, :body, :status, :user_id)
+    @post.attributes = params.require(:post).permit(:title, :body, :status, :user_id, tag_ids: [])
     @post.save!
 
     redirect_to post_path(@post)
