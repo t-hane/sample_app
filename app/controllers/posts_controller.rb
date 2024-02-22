@@ -2,7 +2,7 @@ class PostsController < ApplicationController
 
   # GET /posts
   def index
-    @posts = Post.all
+    @posts = params[:status].nil? ? Post.all : Post.where(status: params[:status])
   end
 
   # GET /posts/new
@@ -13,7 +13,7 @@ class PostsController < ApplicationController
   # POST /posts
   def create
     @post = Post.new
-    @post.attributes = params.require(:post).permit(:title, :body)
+    @post.attributes = params.require(:post).permit(:title, :body, :status, :user_id)
     @post.save!
 
     redirect_to post_path(@post)
@@ -34,7 +34,7 @@ class PostsController < ApplicationController
   # PATCH /posts/:id
   def update
     @post = Post.find params[:id]
-    @post.attributes = params.require(:post).permit(:title, :body)
+    @post.attributes = params.require(:post).permit(:title, :body, :status, :user_id)
     @post.save!
 
     redirect_to post_path(@post)

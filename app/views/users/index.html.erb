@@ -1,0 +1,9 @@
+<% @users.each do |user| %>
+  <%= link_to user.name, edit_user_path(user) %>
+<% end %>
+<hr/>
+<%= form_with model: @user, local: true do |f| %>
+  <%= f.text_field :name %>
+  <%= f.submit %>
+<% end %>
+  

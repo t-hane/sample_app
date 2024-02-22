@@ -1,4 +1,8 @@
 <%= link_to 'New Post', new_post_path %>
+<%= link_to 'All', posts_path %>
+<% Post.statuses.keys.each do |name| %>
+  <%= link_to name, posts_path(status: name) %>
+<% end %>
 
 <table>
   <thead>

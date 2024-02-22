@@ -9,4 +9,11 @@
   <dt>Body</dt>
   <dd><%= @post.body %></dd>
 </dl>
-
+<dl>
+  <dt>Status</dt>
+  <dd><%= @post.status %></dd>
+</dl>
+<dl>
+  <dt>User</dt>
+  <dd><%= @post.user&.name %></dd>
+</dl>

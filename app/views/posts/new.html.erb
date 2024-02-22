@@ -1,8 +1,13 @@
-<%= form_with model: @post, local: true do |f| %>
+<%= form_with model: @post, url: posts_path, local: true do |f| %>
   <%= f.text_field :title %>
   <%= render_errors f.object, :title %>
   <%= f.text_area :body %>
   <%= render_errors f.object, :body %>
+  <% Post.statuses.keys.each do |name| %>
+    <%= f.radio_button :status, name %>
+    <%= f.label :status, name, value: name %>
+  <% end %>
+  <%= f.collection_select :user_id, User.all, :id, :name %>
   <%= f.submit %>
 <% end %>
 
